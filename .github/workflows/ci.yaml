@@ -260,6 +260,9 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y libglib2.0-dev libatk1.0-dev libgtk-3-dev
+      - name: Set LD_LIBRARY_PATH
+        run: |
+          echo "LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu" >> $GITHUB_ENV          
       - name: Checkout sources
         uses: actions/checkout@v3
 
