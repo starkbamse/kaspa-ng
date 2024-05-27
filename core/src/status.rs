@@ -135,6 +135,7 @@ impl<'core> Status<'core> {
                 ui.add(Label::new(RichText::new(i18n("CONNECTED"))).sense(Sense::click()));
 
             let popup_id = PopupPanel::id(ui, "node_connection_selector_popup");
+
             if !PopupPanel::is_open(ui, popup_id) {
                 response = response.on_hover_ui(|ui| {
                     if let Some(wrpc_url) = runtime().kaspa_service().rpc_url() {
@@ -143,12 +144,6 @@ impl<'core> Status<'core> {
                         });
                     }
                 });
-            }
-            
-            if self.core.settings.node.connection_config_kind
-                == NodeConnectionConfigKind::PublicServerRandom
-            {
-                return;
             }
 
             PopupPanel::new(
